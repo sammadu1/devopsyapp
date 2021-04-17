@@ -5,24 +5,24 @@ app.use(express.json());
 
 const wordsToReplace = ["Google", "Microsoft", "Amazon", "Deloitte", "Oracle"];
 
-const stringApi = function (input) {
+const stringApi = function(input) {
     let output = input.toLowerCase();
 
-    for (let word of wordsToReplace){
+    for (let word of wordsToReplace) {
         let target = word.toLowerCase();
-        output = output.replace(target, word+"\xA9");
+        output = output.replace(target, word + "\xA9");
 
 
     }
     console.log(output)
-    return output; 
+    return output;
 }
 
 //routing
 app.get("/string-api/:input", async(request, response) => {
     try {
         const input = request.params.input;
-    
+
         const output = await stringApi(input);
         // if (output == null) return response.status([])
 
@@ -30,8 +30,7 @@ app.get("/string-api/:input", async(request, response) => {
             "output": output
         })
     } catch (err) {
-        return response.status(400).json(err.message+ "Format :  {baseURL}/string-api/{input string to  convert}"
-        )
+        return response.status(400).json(err.message + "Format :  {baseURL}/string-api/{input string to convert}")
         console.log("invalid input")
     }
 })
