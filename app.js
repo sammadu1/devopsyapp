@@ -6,16 +6,18 @@ app.use(express.json());
 const wordsToReplace = ["Google", "Microsoft", "Amazon", "Deloitte", "Oracle"];
 
 const stringApi = function(input) {
-    let output = input.toLowerCase();
+    let searchString = input.toLowerCase(); //to ensure target words are always the same Lower || Upper
 
     for (let word of wordsToReplace) {
-        let target = word.toLowerCase();
-        output = output.replace(target, word + "\xA9");
+        let target = word.toLowerCase(); //to ensure target words are always the same Lower || Upper
+        if (searchString.search(target) != -1) {
+            return input + "\xA9"
+        }
 
 
     }
-    console.log(output)
-    return output;
+    console.log(input)
+    return input;
 }
 
 //routing
