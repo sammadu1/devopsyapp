@@ -52,5 +52,5 @@ jobs:
       with:
         app-name: 'devopsyapps'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_b95c3ab714da40e797bea2cd3a0e7444 }}
+        publish-profile: ${{ secrets.PORTAL_PUBLISH_PROFILE }}
         package: .
